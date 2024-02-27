@@ -1,0 +1,22 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "image": "https://w7.pngwing.com/pngs/1010/160/png-transparent-woody-from-toy-story-toy-story-3-the-video-game-sheriff-woody-jessie-buzz-lightyear-toy-story-cowboy-cowboy-hat-cartoon-thumbnail.png",
+      "name": "Toy Story 3",
+      "director": "Lee Unkrich",
+      "year": 2010,
+      "rating": 4.5,
+      "color": "#f7f6d7"
+    },
+    {
+      "id": 2,
+      "image": "https://w7.pngwing.com/pngs/526/409/png-transparent-john-wick-film-director-english-dts-others-sound-film-1080p.png",
+      "name": "John Wick",
+      "director": "Chad Stahelski",
+      "year": 2014,
+      "rating": 5.0,
+      "color": "#f5d3e4"
+    }
+  ]
+}
