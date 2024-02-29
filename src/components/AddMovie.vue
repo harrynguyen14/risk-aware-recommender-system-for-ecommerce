@@ -30,7 +30,7 @@
           return;
         }
         this.$emit('add', this.newMovie);
-        this.newMovie = { title: '', poster: '', rating: 0 };
+        this.newMovie = { title: '', poster: '', rating: '' };
       }
     }
   }

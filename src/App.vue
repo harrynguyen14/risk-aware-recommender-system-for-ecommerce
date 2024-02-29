@@ -2,25 +2,25 @@
   <div id="app">
     <!-- Screen 1 -->
     <div v-if="currentScreen === 1">
-      
+
       <div class="search-movie">
         <input type="text" v-model="searchQuery" placeholder="Search movies...">
       </div>
-      
+
       <div class="movie-list">
         <MovieCard v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
       </div>
-      
+
       <AddMovie />
-      
+
       <RecommendedMovies />
     </div>
 
     <!-- Screen 2 -->
     <div v-else>
-      
+
       <BiasChecker />
-      
+
       <ParameterAdjuster />
     </div>
   </div>
@@ -32,6 +32,7 @@ import BiasChecker from '@/components/BiasChecker.vue';
 import RecommendedMovies from '@/components/RecommendedMovies.vue';
 import ParameterAdjuster from '@/components/ParameterAdjuster.vue';
 import MovieCard from '@/components/MovieCard.vue';
+import axios from 'axios';
 
 export default {
   name: 'App',
@@ -44,7 +45,7 @@ export default {
   },
   data() {
     return {
-      currentScreen: 1, 
+      currentScreen: 1,
       searchQuery: '',
       movies: []
     };
