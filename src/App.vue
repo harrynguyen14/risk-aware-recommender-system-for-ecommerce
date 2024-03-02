@@ -1,62 +1,61 @@
 <template>
   <div id="app">
-    <!-- Screen 1 -->
-    <div v-if="currentScreen === 1">
+    <Navigation />
+    <div class="screen-wrapper">
+      <!-- Screen 1 -->
+      <div class="screen">
 
-      <div class="search-movie">
-        <input type="text" v-model="searchQuery" placeholder="Search movies...">
+        <div class="search-movie">
+          <input type="text" v-model="searchQuery" placeholder="Search movies...">
+        </div>
+
+        <div class="movie-list">
+          <MovieCard v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
+        </div>
+
+        <AddMovie />
       </div>
 
-      <div class="movie-list">
-        <MovieCard v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
+      <!-- Screen 2 -->
+      <div class="screen">
+        <RecommendedMovies />
+
+        <FairnessChecker />
+        <ParameterAdjuster />
       </div>
-
-      <AddMovie />
-
-      <RecommendedMovies />
-    </div>
-
-    <!-- Screen 2 -->
-    <div v-else>
-
-      <BiasChecker />
-
-      <ParameterAdjuster />
     </div>
   </div>
 </template>
 
 <script>
 import AddMovie from '@/components/AddMovie.vue';
-import BiasChecker from '@/components/BiasChecker.vue';
 import RecommendedMovies from '@/components/RecommendedMovies.vue';
+import FairnessChecker from '@/components/FairnessChecker.vue';
 import ParameterAdjuster from '@/components/ParameterAdjuster.vue';
 import MovieCard from '@/components/MovieCard.vue';
+import Navigation from '@/components/Navigation.vue'; 
 import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
     AddMovie,
-    BiasChecker,
+    FairnessChecker,
     RecommendedMovies,
     ParameterAdjuster,
-    MovieCard
+    MovieCard,
+    Navigation 
   },
   data() {
     return {
-      currentScreen: 1,
       searchQuery: '',
       movies: []
     };
   },
   mounted: function () {
-    axios
-      .get("movies.json")
-      .then((res) => {
-        console.log(res.data)
-        this.movies = res.data.movies;
-      });
+    axios.get("movies.json").then((res) => {
+      this.movies = res.data.movies;
+    });
   },
   computed: {
     filteredMovies() {
@@ -71,6 +70,15 @@ export default {
 <style>
 #app {
   font-family: Arial, sans-serif;
+}
+
+.screen-wrapper {
+  display: flex;
+}
+
+.screen {
+  flex: 1;
+  padding: 20px;
 }
 
 .search-movie input[type="text"] {
@@ -95,7 +103,7 @@ export default {
 }
 
 .add-movie,
-.bias-checker,
+.fairness-checker,
 .recommended-movies,
 .parameter-adjuster {
   background-color: #111;
@@ -132,6 +140,3 @@ export default {
   background-color: #d30813;
 }
 </style>
-
-
-

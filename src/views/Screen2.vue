@@ -1,27 +1,27 @@
 <!-- Screen2.vue -->
 <template>
     <div>
-      <bias-checker @check-bias="checkBias"></bias-checker>
+      <fairness-checker @check-fairness="checkFairness"></fairness-checker>
       <parameter-adjuster @adjust-parameters="adjustParameters"></parameter-adjuster>
     </div>
   </template>
   
   <script>
-  import BiasChecker from '@/components/BiasChecker.vue';
+  import FairnessChecker from '@/components/FairnessChecker.vue';
   import ParameterAdjuster from '@/components/ParameterAdjuster.vue';
   
   export default {
     name: 'Screen2',
     components: {
-      BiasChecker,
+      FairnessChecker,
       ParameterAdjuster
     },
     methods: {
-      checkBias() {
-        // Implement bias checking logic here
+      checkFairness() {
+        
       },
       adjustParameters(params) {
-        // Implement parameter adjustment logic here
+        
       }
     }
   }

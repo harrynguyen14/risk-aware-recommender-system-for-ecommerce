@@ -16,7 +16,7 @@
     },
     methods: {
       search() {
-        this.$emit('search', this.query);
+        console.log('Searching for:', this.searchQuery);
       }
     }
   }
